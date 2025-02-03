@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-navigation";
 import Wordlist from "../components/wordlist/Wordlist";
 import History from "../components/history/History";
 import { StyleSheet } from "react-native";
+import Favorites from "../components/favorites/Favorites";
 
 const options = [
   {
@@ -35,6 +36,7 @@ export default function HomeScreen() {
 
       {tabs === "wordlist" && <Wordlist data={data} />}
       {tabs === "history" && <History data={data} />}
+      {tabs === "favorites" && <Favorites data={data} />}
     </SafeAreaView>
   );
 }

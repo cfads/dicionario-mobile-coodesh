@@ -14,11 +14,11 @@ const WordDefinitions: React.FC<WordDefinitionsProps> = ({ definitions }) => {
         <Text>{`Definition #${key + 1}: ${definition.definition}`}</Text>
       )}
       {definition.example && <Text>{`Example: ${definition.example}`}</Text>}
-      {definition.synonyms.length && (
-        <Text>{`Synonyms: ${definition.synonyms}`}</Text>
+      {definition.synonyms.length > 0 && (
+        <Text>{`Synonyms: ${definition.synonyms.join(", ")}`}</Text>
       )}
-      {definition.antonyms.length && (
-        <Text>{`Antonyms: ${definition.antonyms}`}</Text>
+      {definition.antonyms.length > 0 && (
+        <Text>{`Antonyms: ${definition.antonyms.join(", ")}`}</Text>
       )}
       {key < definitions.length - 1 && <Divider style={styles.divider} />}
     </View>
