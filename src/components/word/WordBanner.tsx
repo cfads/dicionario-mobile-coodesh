@@ -45,24 +45,24 @@ export default WordBanner;
 
 const styles = StyleSheet.create({
   banner: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-
     height: 250,
     borderWidth: 2,
     borderRadius: 20,
+
     margin: 10,
-    gap: 20,
+
     position: "relative",
   },
   content: {
     alignItems: "center",
+    justifyContent: "center",
+    gap: 5,
+    height: "100%",
   },
 
   favoriteIcon: {
     position: "absolute",
-    bottom: -80,
-    right: -80,
+    bottom: 5,
+    right: 5,
   },
 });
