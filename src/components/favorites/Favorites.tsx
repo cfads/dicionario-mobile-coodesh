@@ -15,10 +15,6 @@ const Favorites: React.FC<FavoritesProps> = ({ data }) => {
   const [wordsFiltered, setWordsFiltered] = useState<Word[]>([]);
 
   useEffect(() => {
-    loadFavorites();
-  }, []);
-
-  useEffect(() => {
     const filtered = data.filter((dataItem) =>
       favorites.includes(dataItem.word)
     );
@@ -28,7 +24,7 @@ const Favorites: React.FC<FavoritesProps> = ({ data }) => {
   useFocusEffect(
     useCallback(() => {
       loadFavorites();
-    }, [loadFavorites])
+    }, [favorites])
   );
 
   return (

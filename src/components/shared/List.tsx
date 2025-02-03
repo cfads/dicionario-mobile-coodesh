@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -19,31 +19,27 @@ const List: React.FC<ListProps> = ({ data }) => {
 
   const handlePress = async (item: Word) => {
     await saveHistory(item.word);
-
     navigation.navigate("Word", item);
   };
 
-  const renderItem = ({ item }: { item: Word }) => (
-    <TouchableOpacity
-      style={styles.touchable}
-      onPress={() => handlePress(item)}
-    >
-      <Card style={styles.card}>
-        <Card.Content>
-          <Text style={styles.cardTitle}>{capitalize(item.word)}</Text>
-        </Card.Content>
-      </Card>
-    </TouchableOpacity>
-  );
-
   return (
-    <FlatList
-      style={styles.list}
-      data={data}
-      renderItem={renderItem}
-      numColumns={3}
-      columnWrapperStyle={styles.columnWrapper}
-    />
+    <View style={styles.list}>
+      <View style={styles.grid}>
+        {data.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.touchable}
+            onPress={() => handlePress(item)}
+          >
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text style={styles.cardTitle}>{capitalize(item.word)}</Text>
+              </Card.Content>
+            </Card>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 };
 
@@ -53,15 +49,17 @@ const styles = StyleSheet.create({
     margin: 10,
     paddingTop: 10,
   },
-  columnWrapper: {
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
     justifyContent: "space-between",
   },
   touchable: {
-    flex: 1,
+    width: "32%",
+    marginBottom: 10,
   },
   card: {
     flex: 1,
-    margin: 5,
     height: 120,
     borderRadius: 5,
     alignItems: "center",

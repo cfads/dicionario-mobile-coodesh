@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SegmentedButtons } from "react-native-paper";
+import { SegmentedButtons, useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-navigation";
 
 import Wordlist from "../components/wordlist/Wordlist";
@@ -25,12 +25,15 @@ const options = [
 export default function HomeScreen() {
   const [tabs, setTabs] = useState("wordlist");
 
+  const theme = useTheme();
+
   return (
     <SafeAreaView>
       <SegmentedButtons
         value={tabs}
         onValueChange={setTabs}
         buttons={options}
+        theme={{ colors: { primary: "green" } }}
         style={styles.segmentedbtn}
       />
 
@@ -43,8 +46,9 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   segmentedbtn: {
-    marginHorizontal: 30,
-    marginTop: 40,
+    marginHorizontal: 25,
+    marginTop: 15,
+    marginBottom: 10,
   },
 });
 

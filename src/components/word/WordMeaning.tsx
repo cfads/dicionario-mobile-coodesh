@@ -10,6 +10,8 @@ interface WordBannerProps {
 }
 
 const WordMeaning: React.FC<WordBannerProps> = ({ data }) => {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
       <Text variant="headlineMedium">Meanings</Text>
@@ -17,7 +19,9 @@ const WordMeaning: React.FC<WordBannerProps> = ({ data }) => {
       {data.meanings.map((word, key) => (
         <View key={key} style={styles.itemSpeech}>
           <View style={styles.chipContainer}>
-            <Chip style={styles.partOfSpeech}>
+            <Chip
+              style={[styles.partOfSpeech, { backgroundColor: colors.primary }]}
+            >
               <Text>{capitalize(word.partOfSpeech)}</Text>
             </Chip>
           </View>
@@ -37,7 +41,6 @@ const styles = StyleSheet.create({
   },
   partOfSpeech: {
     marginVertical: 24,
-    backgroundColor: "#3ED1D2",
   },
   chipContainer: {
     flexDirection: "row",

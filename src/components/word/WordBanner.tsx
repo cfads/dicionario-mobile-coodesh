@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Card, IconButton, Text } from "react-native-paper";
+import { Card, IconButton, Text, useTheme } from "react-native-paper";
 import { WordData } from "../../types/types";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import useFavorite from "../../hooks/useFavorite";
 
 interface WordBannerProps {
@@ -12,6 +12,8 @@ const WordBanner: React.FC<WordBannerProps> = ({ data }) => {
   const { favorites, saveFavorites, loadFavorites } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const { colors } = useTheme();
+
   useEffect(() => {
     loadFavorites();
   }, []);
@@ -21,7 +23,7 @@ const WordBanner: React.FC<WordBannerProps> = ({ data }) => {
   }, [favorites, data, isFavorite]);
 
   return (
-    <Card style={styles.banner}>
+    <Card style={[styles.banner, { backgroundColor: colors.primary }]}>
       <Card.Content style={styles.content}>
         <Text variant="displaySmall">{data.word}</Text>
         <Text variant="headlineSmall">{data.phonetic}</Text>
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#3ED1D2",
+
     height: 250,
     borderWidth: 2,
     borderRadius: 20,

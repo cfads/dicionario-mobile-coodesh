@@ -12,6 +12,9 @@ export default function App() {
     colors: {
       ...DefaultTheme.colors,
       primary: "#3ED1D2",
+      secondaryContainer: "rgba(62, 209, 210,0.7)",
+      onSecondaryContainer: "#FFF",
+      outline: "#3ED1D2",
     },
   };
 
