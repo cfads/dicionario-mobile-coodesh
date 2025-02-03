@@ -5,6 +5,7 @@ import { Word } from "../../types/types";
 import { useCallback, useEffect, useState } from "react";
 import useFavorites from "../../hooks/useFavorite";
 import { useFocusEffect } from "@react-navigation/native";
+import ItemsNotFound from "../shared/ItemsNotFound";
 
 interface FavoritesProps {
   data: Word[];
@@ -32,7 +33,7 @@ const Favorites: React.FC<FavoritesProps> = ({ data }) => {
       <Text style={styles.title} variant="headlineLarge">
         Favorites
       </Text>
-      <List data={wordsFiltered} />
+      {wordsFiltered.length ? <List data={wordsFiltered} /> : <ItemsNotFound />}
     </ScrollView>
   );
 };

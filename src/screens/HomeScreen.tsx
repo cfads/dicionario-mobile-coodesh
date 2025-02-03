@@ -25,15 +25,12 @@ const options = [
 export default function HomeScreen() {
   const [tabs, setTabs] = useState("wordlist");
 
-  const theme = useTheme();
-
   return (
     <SafeAreaView>
       <SegmentedButtons
         value={tabs}
         onValueChange={setTabs}
         buttons={options}
-        theme={{ colors: { primary: "green" } }}
         style={styles.segmentedbtn}
       />
 

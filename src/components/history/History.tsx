@@ -5,6 +5,7 @@ import { Word } from "../../types/types";
 import useHistory from "../../hooks/useHistory";
 import { useCallback, useEffect, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
+import ItemsNotFound from "../shared/ItemsNotFound";
 
 interface HistoryProps {
   data: Word[];
@@ -38,7 +39,7 @@ const History: React.FC<HistoryProps> = ({ data }) => {
       <Text style={styles.title} variant="headlineLarge">
         History
       </Text>
-      <List data={wordsFiltered} />
+      {wordsFiltered.length ? <List data={wordsFiltered} /> : <ItemsNotFound />}
     </ScrollView>
   );
 };

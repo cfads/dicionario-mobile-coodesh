@@ -2,6 +2,7 @@ import { Text } from "react-native-paper";
 import List from "../shared/List";
 import { ScrollView, StyleSheet } from "react-native";
 import { Word } from "../../types/types";
+import ItemsNotFound from "../shared/ItemsNotFound";
 
 interface WordListProps {
   data: Word[];
@@ -13,7 +14,7 @@ const Wordlist: React.FC<WordListProps> = ({ data }) => {
       <Text style={styles.title} variant="headlineLarge">
         Word list
       </Text>
-      <List data={data} />
+      {data.length ? <List data={data} /> : <ItemsNotFound />}
     </ScrollView>
   );
 };
