@@ -7,6 +7,8 @@ import History from "../components/history/History";
 import { StyleSheet } from "react-native";
 import Favorites from "../components/favorites/Favorites";
 
+import { dataMock } from "../../mocks/mock";
+
 const options = [
   {
     value: "wordlist",
@@ -34,9 +36,9 @@ export default function HomeScreen() {
         style={styles.segmentedbtn}
       />
 
-      {tabs === "wordlist" && <Wordlist data={data} />}
-      {tabs === "history" && <History data={data} />}
-      {tabs === "favorites" && <Favorites data={data} />}
+      {tabs === "wordlist" && <Wordlist data={dataMock} />}
+      {tabs === "history" && <History data={dataMock} />}
+      {tabs === "favorites" && <Favorites data={dataMock} />}
     </SafeAreaView>
   );
 }
@@ -48,36 +50,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-
-const data = [
-  { id: 1, word: "abundance" },
-  { id: 2, word: "adventure" },
-  { id: 3, word: "airplane" },
-  { id: 4, word: "ancient" },
-  { id: 5, word: "art" },
-  { id: 6, word: "apple" },
-  { id: 7, word: "balance" },
-  { id: 8, word: "banana" },
-  { id: 9, word: "balloon" },
-  { id: 10, word: "beauty" },
-  { id: 11, word: "blue" },
-  { id: 12, word: "breeze" },
-  { id: 13, word: "bravery" },
-  { id: 14, word: "butterfly" },
-  { id: 15, word: "calm" },
-  { id: 16, word: "calmness" },
-  { id: 17, word: "cat" },
-  { id: 18, word: "cherry" },
-  { id: 19, word: "cloud" },
-  { id: 20, word: "compassion" },
-  { id: 21, word: "creativity" },
-  { id: 22, word: "date" },
-  { id: 23, word: "delight" },
-  { id: 24, word: "dog" },
-  { id: 25, word: "dream" },
-  { id: 26, word: "eclipse" },
-  { id: 27, word: "enlighten" },
-  { id: 28, word: "energy" },
-  { id: 29, word: "eternity" },
-  { id: 30, word: "explore" },
-];
