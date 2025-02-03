@@ -52,11 +52,12 @@ const styles = StyleSheet.create({
   grid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
   },
   touchable: {
     width: "32%",
     marginBottom: 10,
+    paddingHorizontal: "1%",
   },
   card: {
     flex: 1,

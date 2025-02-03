@@ -3,7 +3,8 @@ import List from "../shared/List";
 import { ScrollView, StyleSheet } from "react-native";
 import { Word } from "../../types/types";
 import useHistory from "../../hooks/useHistory";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 
 interface HistoryProps {
   data: Word[];
@@ -12,10 +13,6 @@ interface HistoryProps {
 const History: React.FC<HistoryProps> = ({ data }) => {
   const { history, loadHistory } = useHistory();
   const [wordsFiltered, setWordsFiltered] = useState<Word[]>([]);
-
-  useEffect(() => {
-    loadHistory();
-  }, []);
 
   useEffect(() => {
     const filtered = history.map((item) => {
@@ -29,6 +26,12 @@ const History: React.FC<HistoryProps> = ({ data }) => {
 
     setWordsFiltered(filtered.reverse());
   }, [history, data]);
+
+  useFocusEffect(
+    useCallback(() => {
+      loadHistory();
+    }, [history])
+  );
 
   return (
     <ScrollView style={styles.container}>
